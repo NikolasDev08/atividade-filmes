@@ -1,0 +1,29 @@
+GET http://localhost:3001/listar
+
+###
+
+POST http://localhost:3001/adicionar
+Content-Type: application/json
+
+{
+    "titulo": "Carros 2",
+    "genero": "Animação",
+    "duracao": 117,
+    "classificacao": "Livre"
+}
+
+###
+
+PUT http://localhost:3001/update/1
+Content-Type: application/json
+
+{
+    "titulo": "Vingadores",
+    "genero": "Ação",
+    "duracao": 185,
+    "classificacao": "15"
+}
+
+###
+
+DELETE http://localhost:3001/delete/1
