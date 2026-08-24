@@ -78,13 +78,3 @@ app.delete("/delete/:id", (request, response) => {
         });
     });
 });
-
-// Executa o listen apenas localmente (A Vercel usa Serverless Functions e ignora o listen direto)
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(3001, () => {
-        console.log("Servidor rodando localmente na porta 3001!");
-    });
-}
-
-// OBRIGATÓRIO PARA A VERCEL
-export default app;
