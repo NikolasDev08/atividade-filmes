@@ -2,6 +2,15 @@ import express from "express";
 import cors from "cors";
 import sql from "./conexao.js";
 
+import mysql from "mysql2";
+
+const connection = mysql.createConnection({
+    host: "benserverplex.ddns.net",
+    user: "alunos",
+    password: "senhaAlunos",
+    database: "alunos_filmes03TB"
+});
+
 const app = express();
 
 app.use(cors());
@@ -78,3 +87,7 @@ app.delete("/delete/:id", (request, response) => {
         });
     });
 });
+
+app.listen(3001, () => {
+    console.log("Servidor rodando na porta 3001")
+})
