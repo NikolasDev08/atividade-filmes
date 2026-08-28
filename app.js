@@ -1,10 +1,9 @@
 import express from "express";
 import cors from "cors";
-import sql from "./conexao.js";
 
 import mysql from "mysql2";
 
-const connection = mysql.createConnection({
+const sql = mysql.createConnection({
     host: "benserverplex.ddns.net",
     user: "alunos",
     password: "senhaAlunos",
