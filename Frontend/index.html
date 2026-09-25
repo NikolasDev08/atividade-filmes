@@ -1,16 +1,115 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Frontend Filmes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineBrutal - Gerenciador de Filmes</title>
+  
+  <!-- Fonte Google Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Externos -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Lista de Filmes</h1>
 
-    <section class="filmes"></section>
+  <div class="container">
+    <header>
+      <h1>🎬 CineBrutal</h1>
+      <p>Catálogo & Gerenciador de Filmes Neo-Brutalista</p>
+    </header>
 
-    <script src="script.js"></script>
+    <!-- BARRA SUPERIOR: BOTÃO DE CADASTRAR E ESTATÍSTICAS -->
+    <div class="top-bar">
+      <div class="stats-badge">
+        Total de filmes: <strong id="totalCount">0</strong>
+      </div>
+      <!-- REQUISITO 1: Botão para Cadastrar Novo Filme -->
+      <button class="btn-add-movie" id="btnOpenAddModal">➕ Cadastrar Novo Filme</button>
+    </div>
+
+    <!-- CONTROLES: PESQUISA E FILTROS -->
+    <div class="controls">
+      <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Pesquisar por título ou gênero...">
+      
+      <div class="filter-buttons" id="filterContainer">
+        <button class="btn-filter active" data-genre="todos">Todos</button>
+        <button class="btn-filter" data-genre="Ação">Ação</button>
+        <button class="btn-filter" data-genre="Ficção">Ficção</button>
+        <button class="btn-filter" data-genre="Animação">Animação</button>
+        <button class="btn-filter" data-genre="Romance">Romance</button>
+        <button class="btn-filter" data-genre="Aventura">Aventura</button>
+        <button class="btn-filter" data-genre="Comédia">Comédia</button>
+        <button class="btn-filter" data-genre="Fantasia">Fantasia</button>
+      </div>
+    </div>
+
+    <!-- GRID ONDE OS CARDS DE FILMES SÃO RENDERIZADOS -->
+    <div class="movies-grid" id="moviesGrid">
+      <!-- Cards gerados dinamicamente via JavaScript -->
+    </div>
+  </div>
+
+  <!-- MODAL / PÁGINA DE CADASTRO E EDIÇÃO -->
+  <div class="modal-overlay" id="movieModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">➕ Cadastrar Filme</h2>
+        <button class="btn-close-modal" id="btnCloseModal">&times;</button>
+      </div>
+
+      <form id="movieForm">
+        <!-- Input invisível para armazenar o ID ao editar -->
+        <input type="hidden" id="movieId">
+
+        <div class="form-group">
+          <label for="movieTitle">Título do Filme:</label>
+          <input type="text" id="movieTitle" required placeholder="Ex: Vingadores">
+        </div>
+
+        <div class="form-group">
+          <label for="movieGenre">Gênero:</label>
+          <select id="movieGenre" required>
+            <option value="Ação">Ação</option>
+            <option value="Ficção">Ficção</option>
+            <option value="Animação">Animação</option>
+            <option value="Romance">Romance</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Comédia">Comédia</option>
+            <option value="Fantasia">Fantasia</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="movieDuration">Duração (min):</label>
+            <input type="number" id="movieDuration" required placeholder="Ex: 120" min="1">
+          </div>
+
+          <div class="form-group">
+            <label for="movieRating">Classificação Indicativa:</label>
+            <select id="movieRating" required>
+              <option value="Livre">Livre</option>
+              <option value="10">10 anos</option>
+              <option value="12">12 anos</option>
+              <option value="14">14 anos</option>
+              <option value="16">16 anos</option>
+              <option value="18">18 anos</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" id="btnCancel">Cancelar</button>
+          <button type="submit" class="btn-primary" id="btnSave">Salvar Filme</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script Externo -->
+  <script src="script.js"></script>
 </body>
 </html>
